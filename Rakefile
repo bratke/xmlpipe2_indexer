@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "xmlpipe2_indexer"
   gem.homepage = "http://github.com/EeCnee/xmlpipe2_indexer"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{xmlpipe2_indexer provides a small DSL which wrapps sphinx's xmlpipe2}
+  gem.description = %Q{xmlpipe2_indexer provides a small DSL which wrapps sphinx's xmlpipe2}
   gem.email = "bratke@servtag.com"
   gem.authors = ["Ludwig Bratke"]
   # dependencies defined in Gemfile

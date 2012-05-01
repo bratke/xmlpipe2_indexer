@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ludwig Bratke"]
   s.date = "2012-05-01"
-  s.description = "TODO: longer description of your gem"
+  s.description = "xmlpipe2_indexer provides a small DSL which wrapps sphinx's xmlpipe2"
   s.email = "bratke@servtag.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -38,13 +38,14 @@ Gem::Specification.new do |s|
     "lib/xml_pipe2/xml_stream.rb",
     "lib/xmlpipe2_indexer.rb",
     "spec/spec_helper.rb",
-    "spec/xmlpipe2_indexer_spec.rb"
+    "spec/xmlpipe2_indexer_spec.rb",
+    "xmlpipe2_indexer.gemspec"
   ]
   s.homepage = "http://github.com/EeCnee/xmlpipe2_indexer"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.23"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "xmlpipe2_indexer provides a small DSL which wrapps sphinx's xmlpipe2"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
