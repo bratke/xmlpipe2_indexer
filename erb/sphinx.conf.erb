@@ -1,0 +1,33 @@
+indexer
+{
+<%= XMLPipe2::Configuration.indexer.map { |option, value| "#{option} = #{value}" }*"\n" rescue nil %>
+}
+
+searchd
+{
+<%= XMLPipe2::Configuration.searchd.map { |option, value| "#{option} = #{value}" }*"\n" rescue nil %>
+}
+
+<% index = clazz.to_s.downcase %>
+source <%= index %>
+{
+    type = xmlpipe2
+    xmlpipe_command = <%= %x(which cat).rstrip %> <%= '<%= xml_stream_path %%>' %>
+	xmlpipe_fixup_utf8 = 1
+}
+
+index <%= index %>
+{
+  source = <%= index %>
+  path = <%= XMLPipe2::Configuration.index_path %>
+  charset_type = utf-8
+  <%= clazz.sphinx_index_options.map { |option, value| "#{option} = #{value}" }*"\n" %>
+}
+
+index <%= index %>_delta
+{
+  source = <%= index %>
+  path = <%= XMLPipe2::Configuration.delta_index_path %>
+  charset_type = utf-8
+  <%= clazz.sphinx_index_options.map { |option, value| "#{option} = #{value}" }*"\n" %>
+}

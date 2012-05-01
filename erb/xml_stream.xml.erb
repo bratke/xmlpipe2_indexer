@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<sphinx:docset>
+
+  <sphinx:schema>
+    <%= fields.map { |index, _| %(<sphinx:field name="#{index}"/>) }*"\n" %>
+    <%= attrs.map { |attr, _| %(<sphinx:attr name="#{attr}" type="string"/>) }*"\n" %>
+  </sphinx:schema>
+
+  <sphinx:document id="<%= document_id %>">
+    <%= fields.map { |index, value| "<#{index}>#{value}</#{index}>" }*"\n" %>
+    <%= attrs.map { |attr, value| "<#{attr}>#{value}</#{attr}>" }*"\n" %>
+  </sphinx:document>
+
+</sphinx:docset>
