@@ -6,22 +6,23 @@ module XMLPipe2
 
     def initialize(instance)
       @instance = instance
-      @document_id = instance.id
+    end
+
+    class << self
+      attr_accessor :sphinx_id_method
     end
 
     attr_reader :instance
     attr_accessor :document_id
 
     def generate
+      self.document_id = self.class.sphinx_id_method ?  instance.send(self.class.sphinx_id_method) : instance.id
+
       fields = instance.class.sphinx_indexes.inject({ }) do |hash, index|
-        if index[:options].has_key?(:as) and index[:options][:as] == :document_id
-          self.document_id = instance.send(index[:method])
+        if index[:options].has_key?(:as)
+          hash.merge!(index[:options][:as] => instance.send(index[:method]))
         else
-          if index[:options].has_key?(:as)
-            hash.merge!(index[:options][:as] => instance.send(index[:method]))
-          else
-            hash.merge!(index[:method] => instance.send(index[:method]))
-          end
+          hash.merge!(index[:method] => instance.send(index[:method]))
         end
         hash
       end

@@ -1,4 +1,3 @@
-require "active_support/core_ext/class/attribute_accessors"
 require 'tempfile'
 require 'erb'
 

@@ -2,9 +2,9 @@
 
 <sphinx:docset>
 
-  <sphinx:schema>
-    <%= fields.map { |index, _| %(<sphinx:field name="#{index}"/>) }*"\n" %>
-    <%= attrs.map { |attr, _| %(<sphinx:attr name="#{attr}" type="string"/>) }*"\n" %>
-  </sphinx:schema>
+<sphinx:schema>
+<%= fields.map { |index, _| %(<sphinx:field name="#{index}"/>) }*"\n" %>
+<%= attrs.map { |attr, _| %(<sphinx:attr name="#{attr}" type="string"/>) }*"\n" %>
+</sphinx:schema>
 
 </sphinx:docset>

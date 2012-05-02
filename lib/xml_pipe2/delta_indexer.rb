@@ -20,8 +20,7 @@ module XMLPipe2
     def run
       config = '-c ' + sphinx_conf.path
       index = instance.class.to_s.downcase
-      system("$(which indexer) #{config} #{index}_delta")
-      system("$(which indexer) #{config} --merge #{index} #{index}_delta --rotate")
+      system("$(which indexer) #{config} #{index}_delta && $(which indexer) #{config} --merge #{index} #{index}_delta --rotate")
       sphinx_conf.unlink
       xml_stream.unlink
     end

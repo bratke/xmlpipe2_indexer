@@ -49,4 +49,8 @@ module XMLPipe2
     self.sphinx_index_options = options
   end
 
+  def sphinx_id method
+    XMLStream.sphinx_id_method = method
+  end
+
 end

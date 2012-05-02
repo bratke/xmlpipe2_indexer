@@ -1,6 +1,6 @@
 module XMLPipe2
 
-  class XMLSchema < XMLStream
+  class XMLSchema
 
     TEMPLATE = File.read(File.expand_path(File.dirname(__FILE__) + '/../../erb/xml_schema.xml.erb'))
 
@@ -12,21 +12,11 @@ module XMLPipe2
 
     def generate
       fields = clazz.sphinx_indexes.inject({ }) do |hash, index|
-        unless index[:options].has_key?(:as) and index[:options][:as] == :document_id
-          if index[:options].has_key?(:as)
-            hash.merge!(index[:options][:as] => nil)
-          else
-            hash.merge!(index[:method] => nil)
-          end
-        end
+        index[:options].has_key?(:as) ? hash.merge!(index[:options][:as] => nil) : hash.merge!(index[:method] => nil)
         hash
       end
       attrs = clazz.sphinx_attributes.inject({ }) do |hash, attr|
-        if attr[:options].has_key?(:as)
-          hash.merge!(attr[:options][:as] => nil)
-        else
-          hash.merge!(attr[:method] => nil)
-        end
+        attr[:options].has_key?(:as) ? hash.merge!(attr[:options][:as] => nil) : hash.merge!(attr[:method] => nil)
         hash
       end
       ERB.new(TEMPLATE).result(binding)

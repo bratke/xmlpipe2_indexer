@@ -8,13 +8,9 @@ module XMLPipe2
         yield(self)
       end
 
-      cattr_accessor :index_path
-      cattr_accessor :searchd
-      cattr_accessor :indexer
-
-      def delta_index_path
-        index_path + '_delta'
-      end
+      attr_accessor :index_path
+      attr_accessor :searchd
+      attr_accessor :indexer
 
     end
 
